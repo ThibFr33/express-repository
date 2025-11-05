@@ -1,14 +1,17 @@
-//import du paquet express
+//import du paquet express et des autres
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
+const router = require('./routes');
 //créee l'application express
 const app = express();
-const morgan = require('morgan');
-//middlewares
+//parsing
 app.use(express.json());
-app.use(morgan());
+app.use(cors());
+//log les requêtes http
+app.use(morgan("dev"));
+//chercher toutes mes routes (sous la route /api)
+app.use('/api', router);
+
 //export app
-app.get('/test', (req, res) =>{
-    console.log('route test victor');
-    res.send('test de la route ok !');
-})
 module.exports = app;
