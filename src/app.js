@@ -9,6 +9,6 @@ app.use(morgan());
 //export app
 app.get('/test', (req, res) =>{
     console.log('route test victor');
-    res.send('test de la route ok');
+    res.send('test de la route ok !');
 })
 module.exports = app;
